@@ -6,23 +6,23 @@
 -- status: 'available' | 'sold_out' | 'coming_soon' | 'hidden'
 -- badge:  optional short label shown next to the name, e.g. 'Popular'
 --
--- Prices are the ones supplied in the project's share table.
+-- Each plan runs for 38 days (see PLAN_DURATION_DAYS in src/lib/config.ts).
 -- Tiers below are a default split and can be changed freely.
 -- ─────────────────────────────────────────────────────────────────────
 
 insert into public.shares (name, symbol, description, price, daily_earning, tier, badge, status, display_order)
 values
-  ('Nivvy 1',  'NVVY1',  'Nivvy Share',     3000,   900,    'standard', null, 'available',  1),
-  ('Nivvy 2',  'NVVY2',  'Nivvy Share',     5000,   1500,   'standard', null, 'available',  2),
-  ('Nivvy 3',  'NVVY3',  'Nivvy Share',     10000,  3000,   'standard', null, 'available',  3),
-  ('Nivvy 4',  'NVVY4',  'Nivvy Share',     20000,  6000,   'standard', null, 'available',  4),
-  ('Nivvy 5',  'NVVY5',  'Nivvy Share',     30000,  9000,   'standard', null, 'available',  5),
-  ('Nivvy 6',  'NVVY6',  'Nivvy Share',     40000,  12000,  'premium',  null, 'available',  6),
-  ('Nivvy 7',  'NVVY7',  'Nivvy Share',     50000,  15000,  'premium',  null, 'available',  7),
-  ('Nivvy 8',  'NVVY8',  'Nivvy Share',     80000,  24000,  'premium',  null, 'available',  8),
-  ('Nivvy 9',  'NVVY9',  'Nivvy Share',     100000, 30000,  'premium',  null, 'available',  9),
-  ('Nivvy 10', 'NVVY10', 'Nivvy Share',     200000, 60000,  'premium',  null, 'available', 10),
-  ('Nivvy 11', 'NVVY11', 'Nivvy VIP Share', 500000, 150000, 'vip',      null, 'available', 11)
+  ('Stock 1', 'STK1', 'Stocks Plan', 3000, 870, 'standard', null, 'available', 1),
+  ('Stock 2', 'STK2', 'Stocks Plan', 5000, 1450, 'standard', null, 'available', 2),
+  ('Stock 3', 'STK3', 'Stocks Plan', 10000, 2900, 'standard', null, 'available', 3),
+  ('Stock 4', 'STK4', 'Stocks Plan', 20000, 5800, 'standard', null, 'available', 4),
+  ('Stock 5', 'STK5', 'Stocks Plan', 30000, 8700, 'standard', null, 'available', 5),
+  ('Stock 6', 'STK6', 'Stocks Plan', 50000, 14500, 'premium', null, 'available', 6),
+  ('Stock 7', 'STK7', 'Stocks Plan', 70000, 20800, 'premium', null, 'available', 7),
+  ('Stock 8', 'STK8', 'Stocks Plan', 100000, 29000, 'premium', null, 'available', 8),
+  ('Stock 9', 'STK9', 'Stocks Plan', 300000, 87000, 'premium', null, 'available', 9),
+  ('Stock 10','STK10','Stocks Plan', 500000, 145000, 'premium', null, 'available', 10),
+  ('Stock 11','STK11','Stocks VIP Plan', 1000000, 290000, 'vip', null, 'available', 11)
 on conflict (symbol) do update set
   name = excluded.name,
   description = excluded.description,

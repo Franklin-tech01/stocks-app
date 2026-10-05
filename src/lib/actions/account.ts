@@ -5,7 +5,7 @@ import type { z } from "zod";
 import { query, withTransaction } from "@/lib/db";
 import { getCurrentUser } from "@/lib/data";
 import { profileSchema, supportSchema } from "@/lib/schemas";
-import { BONUSES_ENABLED, DAILY_LOGIN_BONUS, SHARE_EARNINGS_ENABLED, WELCOME_BONUS_AMOUNT } from "@/lib/config";
+import { BONUSES_ENABLED, DAILY_LOGIN_BONUS, PLAN_DURATION_DAYS, SHARE_EARNINGS_ENABLED, WELCOME_BONUS_AMOUNT } from "@/lib/config";
 
 export type ActionResult = { ok: true } | { ok: false; error: string };
 
@@ -85,7 +85,7 @@ export async function applyReferral(code: string): Promise<ActionResult> {
 /**
  * Records today's login: updates the streak, credits the promotional bonuses
  * (one-time welcome bonus, then the daily login bonus once per UTC day), and
- * credits today's share earnings based on current holdings. Safe to call any
+ * credits today's share earnings based on holdings still inside their plan period. Safe to call any
  * number of times — each credit is claimed with a guarded UPDATE, so a repeat
  * call, a second tab, or a race credits nothing twice. Amounts are computed
  * or read from constants on the server; the client sends nothing.
@@ -108,8 +108,9 @@ export async function recordLogin(): Promise<ActionResult> {
         const [due] = await q<{ amount: number }>(
           `select coalesce(sum(h.quantity * s.daily_earning), 0) as amount
              from holdings h join shares s on s.id = h.share_id
-            where h.user_id = $1`,
-          [userId],
+            where h.user_id = $1
+              and h.created_at > now() - make_interval(days => $2::int)`,
+          [userId, PLAN_DURATION_DAYS],
         );
         const amount = due?.amount ?? 0;
         if (amount > 0) {

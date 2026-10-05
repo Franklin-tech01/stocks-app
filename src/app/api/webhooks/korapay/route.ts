@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { query, withTransaction } from "@/lib/db";
 import { verifyWebhookSignature } from "@/lib/korapay";
+import { REFERRAL_RATE } from "@/lib/config";
 
 export const runtime = "nodejs";
 
@@ -45,13 +46,13 @@ export async function POST(request: Request) {
         ]);
         await q("update transactions set status = 'completed' where reference = $1", [ref]);
 
-        // Credit 25% of the deposit to whoever referred this user.
+        // Credit REFERRAL_RATE of the deposit to whoever referred this user.
         const [profile] = await q<{ referred_by: string | null }>(
           "select referred_by from profiles where id = $1",
           [deposit.user_id],
         );
         if (profile?.referred_by) {
-          const commission = Math.floor(deposit.amount * 0.25);
+          const commission = Math.floor(deposit.amount * REFERRAL_RATE);
           if (commission > 0) {
             await q("update portfolios set balance = balance + $1 where user_id = $2", [
               commission,

@@ -16,9 +16,9 @@ export function Sidebar({ isAdmin = false }: { isAdmin?: boolean }) {
 
   const itemClass = (active: boolean) =>
     cn(
-      "group relative flex h-11 items-center gap-3 rounded-md px-3 text-sm font-medium transition-colors md:justify-center lg:justify-start",
+      "group relative flex h-11 items-center gap-3 rounded-full px-3.5 text-sm font-medium transition-colors md:justify-center lg:justify-start",
       active
-        ? "bg-white/10 text-white"
+        ? "bg-white/15 text-white shadow-[0_1px_0_rgb(255_255_255/0.25)_inset]"
         : "text-navy-muted hover:bg-white/5 hover:text-white",
     );
 
@@ -26,8 +26,8 @@ export function Sidebar({ isAdmin = false }: { isAdmin?: boolean }) {
     const active = !!item.href && pathname.startsWith(item.href);
     const content = (
       <>
-        {active && <span className="absolute left-0 h-5 w-1 rounded-r bg-primary" />}
-        <item.icon className={cn("size-[18px] shrink-0", active && "text-primary")} />
+        {active && <span className="absolute left-1 h-1.5 w-1.5 rounded-full bg-sky-300 shadow-[0_0_10px_2px_rgb(125_211_252/0.8)] lg:hidden" />}
+        <item.icon className={cn("size-[18px] shrink-0", active && "text-sky-300")} />
         <span className="md:hidden lg:inline">{item.label}</span>
       </>
     );
@@ -52,7 +52,7 @@ export function Sidebar({ isAdmin = false }: { isAdmin?: boolean }) {
   }
 
   return (
-    <aside className="sticky top-0 hidden h-dvh w-[76px] shrink-0 flex-col bg-navy p-3 md:flex lg:w-64 lg:p-4">
+    <aside className="glass-dark sticky top-3 m-3 mr-0 hidden h-[calc(100dvh-1.5rem)] w-[76px] shrink-0 flex-col rounded-3xl p-3 text-navy-foreground md:flex lg:w-64 lg:p-4">
       <div className="flex h-12 items-center justify-center px-1 lg:justify-start lg:px-2">
         <Logo tone="light" className="hidden lg:inline-flex" />
         <LogoMark className="lg:hidden" />

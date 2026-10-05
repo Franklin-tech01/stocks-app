@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export default function AppError({ reset }: { error: Error; reset: () => void }) {
   return (
-    <div className="flex flex-col items-center rounded-lg border bg-card px-6 py-16 text-center">
+    <div className="flex flex-col items-center glass rounded-xl px-6 py-16 text-center">
       <div className="grid size-12 place-items-center rounded-full bg-danger-soft text-danger">
         <AlertTriangle />
       </div>

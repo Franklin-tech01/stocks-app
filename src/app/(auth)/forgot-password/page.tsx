@@ -9,7 +9,7 @@ export default function ForgotPasswordPage() {
   const contact = links.whatsapp || (links.supportEmail ? `mailto:${links.supportEmail}` : "");
   return (
     <div>
-      <div className="grid size-12 place-items-center rounded-full bg-primary-soft text-warning">
+      <div className="grid size-12 place-items-center rounded-full bg-primary-soft text-primary">
         <KeyRound />
       </div>
       <h2 className="mt-4 font-display text-2xl font-semibold tracking-tight">Forgot your password?</h2>

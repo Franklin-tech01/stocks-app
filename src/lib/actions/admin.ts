@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { query, withTransaction } from "@/lib/db";
 import { requireAdmin } from "@/lib/data/admin";
 import { payout, OtpayAmbiguousError } from "@/lib/otpay";
+import { WITHDRAWAL_CHARGE_RATE } from "@/lib/config";
 
 export type AdminActionResult = { ok: true } | { ok: false; error: string };
 
@@ -117,7 +118,7 @@ export async function payoutViaOtpay(withdrawalId: string): Promise<AdminActionR
 
   let result;
   try {
-    result = await payout({ bankAccountNo: w.account_number, bankCode: w.bank_code, amount: w.amount });
+    result = await payout({ bankAccountNo: w.account_number, bankCode: w.bank_code, amount: Math.round(w.amount * (1 - WITHDRAWAL_CHARGE_RATE) * 100) / 100 });
   } catch (e) {
     console.error("[admin:otpay-payout]", e);
     if (e instanceof OtpayAmbiguousError) {

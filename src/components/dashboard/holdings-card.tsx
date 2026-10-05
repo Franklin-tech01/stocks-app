@@ -28,7 +28,7 @@ function groupByShare(holdings: Holding[]): Row[] {
     } else {
       byShare.set(h.share_id, {
         shareId: h.share_id,
-        name: h.shares?.name ?? "Nivvy Share",
+        name: h.shares?.name ?? "Stocks Share",
         symbol: h.shares?.symbol ?? "",
         tier: h.shares?.tier ?? "standard",
         quantity: h.quantity,
@@ -47,7 +47,7 @@ export function HoldingsCard({ holdings }: { holdings: Holding[] }) {
       <div className="flex items-center justify-between">
         <h2 className="font-display font-semibold">Your Shares</h2>
         {rows.length > 0 && (
-          <Link href="/marketplace" className="text-sm font-semibold text-warning hover:underline">
+          <Link href="/marketplace" className="text-sm font-semibold text-primary hover:underline">
             Buy more
           </Link>
         )}
@@ -59,7 +59,7 @@ export function HoldingsCard({ holdings }: { holdings: Holding[] }) {
             <Layers className="size-5" />
           </div>
           <p className="mt-3 text-sm font-medium">You don&apos;t own any shares yet</p>
-          <Link href="/marketplace" className="mt-1 text-sm font-semibold text-warning hover:underline">
+          <Link href="/marketplace" className="mt-1 text-sm font-semibold text-primary hover:underline">
             Browse the marketplace
           </Link>
         </div>

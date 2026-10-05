@@ -2,18 +2,23 @@ import type { Metadata } from "next";
 import { Card } from "@/components/ui/card";
 import { EmptyState } from "@/components/layout/page-header";
 import { ShoppingBag } from "lucide-react";
-import { getAdminPurchases } from "@/lib/data/admin";
+import { getAdminPurchases, parseListParams } from "@/lib/data/admin-lists";
+import { Pager, SearchBox } from "@/components/admin/list-controls";
 import { formatDate, formatMoney } from "@/lib/utils";
 
 export const metadata: Metadata = { title: "Admin · Purchases" };
 
-export default async function AdminPurchasesPage() {
-  const purchases = await getAdminPurchases();
+export default async function AdminPurchasesPage({ searchParams }: { searchParams: Promise<{ page?: string; q?: string }> }) {
+  const data = await getAdminPurchases(parseListParams(await searchParams));
+  const purchases = data.rows;
 
   return (
     <div>
       <h1 className="font-display text-2xl font-semibold tracking-tight">Share Purchases</h1>
-      <p className="mt-1 text-sm text-muted-foreground">Most recent {purchases.length} purchases.</p>
+      <p className="mt-1 text-sm text-muted-foreground">Every share purchase, newest first.</p>
+      <div className="mt-5">
+        <SearchBox q={data.q} placeholder="Search name, phone or stock" />
+      </div>
 
       {purchases.length === 0 ? (
         <div className="mt-6">
@@ -47,6 +52,7 @@ export default async function AdminPurchasesPage() {
           </div>
         </Card>
       )}
+      <Pager data={data} basePath="/admin/purchases" />
     </div>
   );
 }

@@ -11,8 +11,18 @@ export default async function AdminOverviewPage() {
 
   const stats = [
     { label: "Total users", value: String(o.totalUsers), icon: Users },
-    { label: "Deposits completed", value: formatMoney(o.depositsCompletedTotal), icon: ArrowDownToLine },
-    { label: "Deposits pending", value: String(o.depositsPendingCount), icon: ArrowDownToLine },
+    {
+      label: "Total deposits",
+      value: formatMoney(o.depositsCompletedTotal),
+      hint: `${o.depositsPendingCount} pending`,
+      icon: ArrowDownToLine,
+    },
+    {
+      label: "Total withdrawals",
+      value: formatMoney(o.withdrawalsCompletedTotal),
+      hint: "Paid out so far",
+      icon: ArrowUpFromLine,
+    },
     {
       label: "Withdrawals awaiting payout",
       value: formatMoney(o.withdrawalsPendingTotal),
@@ -48,7 +58,7 @@ export default async function AdminOverviewPage() {
         {stats.map((s) => (
           <Card key={s.label} className="p-5">
             <div className="flex items-center gap-3">
-              <div className="grid size-10 shrink-0 place-items-center rounded-md bg-primary-soft text-warning">
+              <div className="grid size-10 shrink-0 place-items-center rounded-md bg-primary-soft text-primary">
                 <s.icon className="size-5" />
               </div>
               <p className="text-sm font-medium text-muted-foreground">{s.label}</p>
@@ -62,7 +72,7 @@ export default async function AdminOverviewPage() {
       {o.withdrawalsPendingCount > 0 && (
         <p className="mt-6 text-sm text-muted-foreground">
           {o.withdrawalsPendingCount} withdrawal{o.withdrawalsPendingCount === 1 ? "" : "s"} waiting for payout —
-          see the <a href="/admin/withdrawals" className="font-semibold text-warning hover:underline">Withdrawals</a> tab.
+          see the <a href="/admin/withdrawals" className="font-semibold text-primary hover:underline">Withdrawals</a> tab.
         </p>
       )}
     </div>

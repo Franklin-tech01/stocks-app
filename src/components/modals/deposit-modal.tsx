@@ -46,7 +46,7 @@ export function DepositModal({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogHeader title="Deposit Funds" description="Add money to your Nivvy balance." />
+        <DialogHeader title="Deposit Funds" description="Add money to your Stocks balance." />
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-6 pt-3">
           <Field label="Amount (₦)" htmlFor="dep-amount" error={errors.amount?.message}>
             <Input

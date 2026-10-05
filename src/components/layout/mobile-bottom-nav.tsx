@@ -10,7 +10,7 @@ export function MobileBottomNav() {
   return (
     <nav
       aria-label="Primary"
-      className="safe-bottom fixed inset-x-0 bottom-0 z-40 border-t bg-card/95 backdrop-blur md:hidden"
+      className="safe-bottom glass fixed inset-x-3 bottom-3 z-40 rounded-3xl md:hidden"
     >
       <ul className="grid grid-cols-5">
         {mobileNav.map((item) => {
@@ -28,7 +28,7 @@ export function MobileBottomNav() {
                 <span
                   className={cn(
                     "grid h-7 w-12 place-items-center rounded-full transition-colors",
-                    active && "bg-primary-soft text-warning",
+                    active && "bg-primary text-white shadow-[0_6px_16px_-4px_rgb(26_98_214/0.7)]",
                   )}
                 >
                   <item.icon className="size-[20px]" />

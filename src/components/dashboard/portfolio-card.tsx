@@ -18,7 +18,7 @@ export function PortfolioCard({ totalInvestment, sharesOwned, portfolioValue }: 
     <div className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
       {items.map((it) => (
         <Card key={it.label} className="flex items-center gap-4 p-4 transition-shadow hover:shadow-pop lg:p-5">
-          <div className="grid size-11 shrink-0 place-items-center rounded-md bg-primary-soft text-warning">
+          <div className="grid size-11 shrink-0 place-items-center rounded-md bg-primary-soft text-primary">
             <it.icon className="size-5" />
           </div>
           <div className="min-w-0">

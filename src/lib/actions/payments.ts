@@ -72,7 +72,7 @@ export async function initiateDeposit(input: { amount: number; method: string })
 }
 
 /**
- * Buys a share using the user's Nivvy balance only (no external payment).
+ * Buys a share using the user's Stocks balance only (no external payment).
  * Debit + holding + transaction happen in one DB transaction so a purchase
  * can never charge the balance without recording the holding, or vice versa.
  */

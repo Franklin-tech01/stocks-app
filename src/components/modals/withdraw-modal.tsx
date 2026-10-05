@@ -13,7 +13,7 @@ import { Input, Select } from "@/components/ui/input";
 import { Field } from "@/components/ui/label";
 import { withdrawSchema } from "@/lib/schemas";
 import { getWithdrawalBanks, requestWithdrawal, verifyWithdrawalAccount } from "@/lib/actions/payments";
-import { MIN_WITHDRAWAL_AMOUNT, WITHDRAWALS_ENABLED } from "@/lib/config";
+import { MIN_WITHDRAWAL_AMOUNT, WITHDRAWAL_CHARGE_RATE, WITHDRAWALS_ENABLED } from "@/lib/config";
 import type { Bank } from "@/lib/otpay";
 
 type Values = z.infer<typeof withdrawSchema>;
@@ -92,7 +92,7 @@ export function WithdrawModal({
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
-        <DialogHeader title="Withdraw Funds" description="Move money out of your Nivvy balance." />
+        <DialogHeader title="Withdraw Funds" description="Move money out of your Stocks balance." />
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-6 pt-3">
           <Field label="Amount (₦)" htmlFor="wd-amount" error={errors.amount?.message}>
             <Input
@@ -142,7 +142,10 @@ export function WithdrawModal({
 
           <div className="flex gap-2.5 rounded-md bg-muted p-3 text-sm text-muted-foreground">
             <Info className="mt-0.5 size-4 shrink-0" />
-            <p>The amount is held from your balance immediately and paid out after review.</p>
+            <p>
+              The amount is held from your balance immediately and paid out after review. A{" "}
+              {WITHDRAWAL_CHARGE_RATE * 100}% withdrawal charge applies — you receive the rest.
+            </p>
           </div>
 
           <Button type="submit" className="w-full" disabled={isSubmitting || verify.state !== "ok" || !WITHDRAWALS_ENABLED}>

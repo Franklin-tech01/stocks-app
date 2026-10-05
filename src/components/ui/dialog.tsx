@@ -15,11 +15,11 @@ export function DialogContent({
 }: React.ComponentProps<typeof DialogPrimitive.Content> & { hideClose?: boolean }) {
   return (
     <DialogPrimitive.Portal>
-      <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-navy/60 backdrop-blur-[2px]" />
+      <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-navy/40 backdrop-blur-md" />
       <DialogPrimitive.Content
         className={cn(
-          "safe-bottom fixed z-50 flex max-h-[92dvh] w-full flex-col overflow-y-auto bg-card shadow-pop outline-none",
-          "bottom-0 left-0 rounded-t-2xl sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-2xl",
+          "safe-bottom fixed z-50 flex max-h-[92dvh] w-full flex-col overflow-y-auto border border-white bg-white shadow-pop outline-none",
+          "bottom-0 left-0 rounded-t-2xl sm:bottom-auto sm:left-1/2 sm:top-1/2 sm:max-w-md sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-3xl",
           className,
         )}
         {...props}
@@ -45,7 +45,7 @@ export function DialogHeader({ title, description }: { title: string; descriptio
         {title}
       </DialogPrimitive.Title>
       <DialogPrimitive.Description className="text-sm text-muted-foreground">
-        {description ?? "Nivvy"}
+        {description ?? "Stocks"}
       </DialogPrimitive.Description>
     </div>
   );

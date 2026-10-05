@@ -19,7 +19,7 @@ export function ReferralCard({
   earnings: ReferralEarnings;
 }) {
   const link = `${baseUrl}/register?ref=${code}`;
-  const message = `Join me on Nivvy: ${link}`;
+  const message = `Join me on Stocks: ${link}`;
 
   async function copy() {
     try {
@@ -35,13 +35,13 @@ export function ReferralCard({
       <Card className="p-5">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
-            <div className="grid size-11 place-items-center rounded-md bg-navy text-primary">
+            <div className="grid size-11 place-items-center rounded-md bg-navy text-sky-300">
               <Share2 className="size-5" />
             </div>
             <div>
               <h2 className="font-display font-semibold">Your Invite Link</h2>
               <p className="text-sm text-muted-foreground">
-                Earn 25% of every deposit made by people you refer.
+                Earn 20% of every deposit made by people you refer.
               </p>
             </div>
           </div>
@@ -67,7 +67,7 @@ export function ReferralCard({
           </Button>
           <Button size="sm" variant="outline" asChild>
             <a
-              href={`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent("Join me on Nivvy")}`}
+              href={`https://t.me/share/url?url=${encodeURIComponent(link)}&text=${encodeURIComponent("Join me on Stocks")}`}
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -82,12 +82,12 @@ export function ReferralCard({
 
       <Card className="p-5">
         <div className="flex items-center gap-3">
-          <div className="grid size-11 place-items-center rounded-md bg-navy text-primary">
+          <div className="grid size-11 place-items-center rounded-md bg-navy text-sky-300">
             <TrendingUp className="size-5" />
           </div>
           <div>
             <h2 className="font-display font-semibold">Referral Earnings</h2>
-            <p className="text-sm text-muted-foreground">25% commission on every deposit by your referrals.</p>
+            <p className="text-sm text-muted-foreground">20% commission on every deposit by your referrals.</p>
           </div>
           <div className="ml-auto text-right">
             <p className="font-display text-xl font-semibold">{formatMoney(earnings.total)}</p>

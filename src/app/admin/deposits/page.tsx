@@ -3,18 +3,23 @@ import { Card } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { EmptyState } from "@/components/layout/page-header";
 import { Inbox } from "lucide-react";
-import { getAdminDeposits } from "@/lib/data/admin";
+import { getAdminDeposits, parseListParams } from "@/lib/data/admin-lists";
+import { Pager, SearchBox } from "@/components/admin/list-controls";
 import { formatDate, formatMoney } from "@/lib/utils";
 
 export const metadata: Metadata = { title: "Admin · Deposits" };
 
-export default async function AdminDepositsPage() {
-  const deposits = await getAdminDeposits();
+export default async function AdminDepositsPage({ searchParams }: { searchParams: Promise<{ page?: string; q?: string }> }) {
+  const data = await getAdminDeposits(parseListParams(await searchParams));
+  const deposits = data.rows;
 
   return (
     <div>
       <h1 className="font-display text-2xl font-semibold tracking-tight">Deposits</h1>
-      <p className="mt-1 text-sm text-muted-foreground">Most recent {deposits.length} deposits.</p>
+      <p className="mt-1 text-sm text-muted-foreground">Every deposit, newest first.</p>
+      <div className="mt-5">
+        <SearchBox q={data.q} placeholder="Search name, phone, method or status" />
+      </div>
 
       {deposits.length === 0 ? (
         <div className="mt-6">
@@ -54,6 +59,7 @@ export default async function AdminDepositsPage() {
           </div>
         </Card>
       )}
+      <Pager data={data} basePath="/admin/deposits" />
     </div>
   );
 }

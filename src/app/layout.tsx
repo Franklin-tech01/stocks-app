@@ -7,12 +7,12 @@ const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 const sora = Sora({ variable: "--font-sora", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: { default: "Nivvy", template: "%s · Nivvy" },
-  description: "Nivvy share marketplace",
+  title: { default: "Stocks", template: "%s · Stocks" },
+  description: "Stocks share marketplace",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d1526",
+  themeColor: "#07235c",
   viewportFit: "cover",
 };
 

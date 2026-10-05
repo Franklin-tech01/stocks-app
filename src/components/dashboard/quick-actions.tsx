@@ -5,12 +5,12 @@ import { ArrowDownToLine, ArrowUpFromLine, Receipt, ShoppingBag } from "lucide-r
 import { useModals } from "@/components/modals/modals-provider";
 
 const base =
-  "group flex flex-col items-start gap-3 rounded-lg border bg-card p-4 text-left shadow-card transition hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-pop active:scale-[0.98]";
+  "group flex flex-col items-start gap-3 glass rounded-xl p-4 text-left transition hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-pop active:scale-[0.98]";
 
 function Tile({ icon: Icon, label, hint }: { icon: typeof Receipt; label: string; hint: string }) {
   return (
     <>
-      <span className="grid size-10 place-items-center rounded-md bg-navy text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+      <span className="grid size-10 place-items-center rounded-md bg-navy text-white transition-colors group-hover:bg-primary group-hover:text-sky-300-foreground">
         <Icon className="size-5" />
       </span>
       <span>

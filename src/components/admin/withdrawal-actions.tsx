@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { markWithdrawalPaid, payoutViaOtpay, rejectWithdrawal } from "@/lib/actions/admin";
 import { formatMoney } from "@/lib/utils";
+import { WITHDRAWAL_CHARGE_RATE } from "@/lib/config";
 
 export function WithdrawalActions({
   id,
@@ -26,7 +27,7 @@ export function WithdrawalActions({
   function payViaOtpay() {
     if (
       !window.confirm(
-        `Pay ${formatMoney(amount)} to ${name} via OTPay right now?\n\nThis sends real money immediately and cannot be undone.`,
+        `Pay ${formatMoney(amount * (1 - WITHDRAWAL_CHARGE_RATE))} (after the ${WITHDRAWAL_CHARGE_RATE * 100}% charge) to ${name} via OTPay right now?\n\nThis sends real money immediately and cannot be undone.`,
       )
     )
       return;

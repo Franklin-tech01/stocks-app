@@ -36,7 +36,7 @@ export async function initializeCharge(input: InitializeChargeInput) {
     customer: { email: input.email, name: input.name },
     redirect_url: `${appUrl()}/dashboard?deposit=${input.reference}`,
     notification_url: webhookUrl(),
-    narration: "Nivvy wallet deposit",
+    narration: "Stocks wallet deposit",
   };
   if (CHANNELS.has(input.method)) {
     body.channels = [input.method];

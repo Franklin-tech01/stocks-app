@@ -36,7 +36,7 @@ export function EmptyState({
   description: string;
 }) {
   return (
-    <div className="flex flex-col items-center rounded-lg border border-dashed bg-card px-6 py-12 text-center">
+    <div className="flex flex-col items-center glass rounded-xl border-dashed px-6 py-12 text-center">
       <div className="grid size-12 place-items-center rounded-full bg-muted text-muted-foreground">
         {icon}
       </div>

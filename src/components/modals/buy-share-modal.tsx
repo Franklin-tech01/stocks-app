@@ -55,7 +55,7 @@ export function BuyShareModal({
               <LogoMark className="size-11" />
               <div>
                 <p className="font-display font-semibold">{share.name}</p>
-                <p className="text-xs text-muted-foreground">{share.description ?? "Nivvy Share"}</p>
+                <p className="text-xs text-muted-foreground">{share.description ?? "Stocks Share"}</p>
               </div>
             </div>
 
@@ -104,7 +104,7 @@ export function BuyShareModal({
               </div>
             </dl>
 
-            <p className="text-xs text-muted-foreground">Paid from your Nivvy balance. Deposit funds first if needed.</p>
+            <p className="text-xs text-muted-foreground">Paid from your Stocks balance. Deposit funds first if needed.</p>
 
             <Button className="w-full" size="lg" onClick={confirm} disabled={busy}>
               {busy && <Loader2 className="animate-spin" />} Confirm Purchase

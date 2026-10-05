@@ -33,9 +33,9 @@ export function WelcomeCommunityModal({ userId }: { userId: string }) {
       <DialogContent>
         <div className="flex flex-col items-center px-6 pb-6 pt-8 text-center">
           <LogoMark className="size-14" />
-          <h2 className="mt-4 font-display text-xl font-semibold">Welcome to Nivvy 🎉</h2>
+          <h2 className="mt-4 font-display text-xl font-semibold">Welcome to Stocks 🎉</h2>
           <p className="mt-2 max-w-sm text-sm text-muted-foreground">
-            Stay connected with the Nivvy community for updates, announcements, market information
+            Stay connected with the Stocks community for updates, announcements, market information
             and support.
           </p>
           <div className="mt-6 grid w-full gap-3">

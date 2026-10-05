@@ -41,7 +41,7 @@ export function MarketplaceView({ shares }: { shares: Share[] }) {
                 "h-10 shrink-0 rounded-full border px-5 text-sm font-semibold transition-colors",
                 tier === f.value
                   ? "border-navy bg-navy text-navy-foreground"
-                  : "bg-card text-muted-foreground hover:bg-muted",
+                  : "glass text-muted-foreground hover:bg-white/80",
               )}
             >
               {f.label}
@@ -49,7 +49,7 @@ export function MarketplaceView({ shares }: { shares: Share[] }) {
           ))}
         </div>
 
-        <div className="hidden shrink-0 rounded-md border bg-card p-1 sm:flex" role="group" aria-label="View">
+        <div className="hidden shrink-0 glass rounded-full p-1 sm:flex" role="group" aria-label="View">
           {(
             [
               ["table", List, "Table view"],
@@ -62,7 +62,7 @@ export function MarketplaceView({ shares }: { shares: Share[] }) {
               aria-pressed={view === v}
               onClick={() => setView(v)}
               className={cn(
-                "grid size-8 place-items-center rounded transition-colors",
+                "grid size-8 place-items-center rounded-full transition-colors",
                 view === v ? "bg-navy text-navy-foreground" : "text-muted-foreground hover:bg-muted",
               )}
             >

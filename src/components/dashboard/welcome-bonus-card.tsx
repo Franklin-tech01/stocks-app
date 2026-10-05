@@ -30,12 +30,12 @@ export function WelcomeBonusCard({
     <Card className="overflow-hidden">
       <div className="flex items-start justify-between gap-3 p-5 pb-4">
         <div className="flex items-center gap-3">
-          <div className="grid size-11 place-items-center rounded-md bg-navy text-primary">
+          <div className="grid size-11 place-items-center rounded-md bg-navy text-sky-300">
             <Gift className="size-5" />
           </div>
           <div>
             <h2 className="font-display font-semibold">Welcome Bonus</h2>
-            <p className="text-sm text-muted-foreground">Get rewarded for joining Nivvy.</p>
+            <p className="text-sm text-muted-foreground">Get rewarded for joining Stocks.</p>
           </div>
         </div>
         <Badge tone={badge.tone}>{badge.label}</Badge>

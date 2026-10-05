@@ -6,12 +6,12 @@ const badgeVariants = cva(
   {
     variants: {
       tone: {
-        neutral: "bg-muted text-muted-foreground",
+        neutral: "bg-white/60 text-muted-foreground ring-1 ring-white/70",
         success: "bg-success-soft text-success",
         warning: "bg-warning-soft text-warning",
         danger: "bg-danger-soft text-danger",
-        brand: "bg-primary-soft text-warning",
-        navy: "bg-navy text-navy-foreground",
+        brand: "bg-primary-soft text-primary",
+        navy: "bg-gradient-to-b from-navy-2 to-navy text-navy-foreground",
       },
     },
     defaultVariants: { tone: "neutral" },

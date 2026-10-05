@@ -1,4 +1,4 @@
-# Nivvy
+# Stocks
 
 Share marketplace built with Next.js (App Router), TypeScript, Tailwind v4, Better Auth and Neon (PostgreSQL).
 Users sign up and log in with a **phone number + password** (no email).
@@ -74,7 +74,7 @@ Deposits use Korapay's hosted checkout. The flow:
    already-completed deposit updates nothing.
 3. In the Korapay dashboard, set the webhook URL to `<your deployed URL>/api/webhooks/korapay`.
 
-Share purchases spend the user's Nivvy balance directly (no external payment): `purchaseShare` debits the
+Share purchases spend the user's Stocks balance directly (no external payment): `purchaseShare` debits the
 balance, inserts the holding, and inserts the transaction in one DB transaction
 (`src/lib/db.ts:withTransaction`), so a purchase can't charge without recording it or vice versa. It
 fails cleanly on insufficient balance.

@@ -20,7 +20,7 @@ export const links = {
  * kill switch: false stops all new bonus credits immediately.
  */
 export const BONUSES_ENABLED = true;
-export const WELCOME_BONUS_AMOUNT = 700;
+export const WELCOME_BONUS_AMOUNT = 600;
 export const DAILY_LOGIN_BONUS = 200;
 
 /**
@@ -30,7 +30,7 @@ export const DAILY_LOGIN_BONUS = 200;
  */
 export const SHARE_EARNINGS_ENABLED = true;
 
-export const COMMUNITY_POPUP_STORAGE_KEY = "nivvy:community-popup-dismissed";
+export const COMMUNITY_POPUP_STORAGE_KEY = "stocks:community-popup-dismissed";
 
 /**
  * Deposits (Korapay), share purchases and withdrawal requests are all live.
@@ -43,4 +43,13 @@ export const WITHDRAWALS_ENABLED = true;
 export const MIN_DEPOSIT_AMOUNT = 3000;
 
 /** Smallest withdrawal request (NGN). Enforced client + server side. */
-export const MIN_WITHDRAWAL_AMOUNT = 700;
+export const MIN_WITHDRAWAL_AMOUNT = 800;
+
+/** Share of each withdrawal kept as a charge; the user receives the rest. */
+export const WITHDRAWAL_CHARGE_RATE = 0.2;
+
+/** Share of every referred user's deposit credited to their referrer. */
+export const REFERRAL_RATE = 0.2;
+
+/** Length of every share plan, in days. */
+export const PLAN_DURATION_DAYS = 38;

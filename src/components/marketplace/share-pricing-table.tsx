@@ -7,6 +7,7 @@ import { LogoMark } from "@/components/brand/logo";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { useModals } from "@/components/modals/modals-provider";
 import { formatMoney } from "@/lib/utils";
+import { PLAN_DURATION_DAYS } from "@/lib/config";
 import type { Share } from "@/lib/types";
 
 const tierTone = { standard: "neutral", premium: "brand", vip: "navy" } as const;
@@ -56,6 +57,9 @@ export function SharePricingTable({ shares }: { shares: Share[] }) {
 
             <p className="tabular text-right text-sm font-semibold text-success md:text-left">
               {formatMoney(s.daily_earning)}<span className="text-muted-foreground">/day</span>
+              <span className="block text-xs font-normal text-muted-foreground">
+                {PLAN_DURATION_DAYS} days · {formatMoney(s.daily_earning * PLAN_DURATION_DAYS)}
+              </span>
             </p>
 
             <div className="col-start-1 md:col-start-auto">

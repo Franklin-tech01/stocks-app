@@ -28,7 +28,7 @@ export function ShareEarningsCard({
     <Card className="p-5">
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div className="grid size-11 place-items-center rounded-md bg-navy text-primary">
+          <div className="grid size-11 place-items-center rounded-md bg-navy text-sky-300">
             <TrendingUp className="size-5" />
           </div>
           <div>

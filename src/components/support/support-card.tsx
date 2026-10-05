@@ -15,7 +15,7 @@ export function SupportCard() {
       {options.map((o) => {
         const inner = (
           <>
-            <span className="grid size-11 shrink-0 place-items-center rounded-md bg-navy text-primary">
+            <span className="grid size-11 shrink-0 place-items-center rounded-md bg-navy text-sky-300">
               <o.icon className="size-5" />
             </span>
             <span className="min-w-0 flex-1">

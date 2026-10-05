@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 /*
-  Nivvy design tokens.
-  Palette: deep midnight navy + brass. Change values here only —
+  Stocks design tokens.
+  Palette: deep royal navy + bright blue. Change values here only —
   components reference semantic tokens (bg-primary, text-success, ...).
 */
 :root {
-  --background: #f4f5f9;
+  --background: #eaf1fd;
   --foreground: #101828;
-  --card: #ffffff;
+  --card: rgb(255 255 255 / 0.62);
   --card-foreground: #101828;
-  --muted: #eceef4;
+  --muted: rgb(30 80 190 / 0.07);
   --muted-foreground: #5b6478;
-  --border: #dfe2ec;
-  --input: #d3d7e3;
-  --ring: #b98a2e;
+  --border: rgb(255 255 255 / 0.65);
+  --input: rgb(30 80 190 / 0.16);
+  --ring: #1a6fe0;
 
-  --primary: #b98a2e;
-  --primary-foreground: #0d1526;
-  --primary-soft: #f6edd8;
+  --primary: #1a62d6;
+  --primary-foreground: #ffffff;
+  --primary-soft: #e1ecfc;
 
-  --navy: #0d1526;
-  --navy-2: #16213a;
-  --navy-foreground: #e8ebf3;
-  --navy-muted: #8b94ab;
+  --navy: #07235c;
+  --navy-2: #0c3180;
+  --navy-foreground: #e8eefb;
+  --navy-muted: #9fb2d9;
 
   --success: #1f8a5b;
   --success-soft: #dff3ea;
@@ -32,7 +32,7 @@
   --danger: #c0392b;
   --danger-soft: #fbe3e0;
 
-  --radius: 0.75rem;
+  --radius: 1.1rem;
 }
 
 @theme inline {
@@ -63,8 +63,8 @@
   --radius-sm: calc(var(--radius) - 4px);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-sora), var(--font-inter), sans-serif;
-  --shadow-card: 0 1px 2px rgb(16 24 40 / 0.04), 0 1px 3px rgb(16 24 40 / 0.06);
-  --shadow-pop: 0 12px 32px -8px rgb(13 21 38 / 0.25);
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.8) inset, 0 8px 28px -10px rgb(7 35 92 / 0.18);
+  --shadow-pop: 0 24px 60px -16px rgb(7 35 92 / 0.38);
 }
 
 * {
@@ -72,10 +72,31 @@
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(60rem 40rem at 8% -10%, rgb(56 130 255 / 0.28), transparent 60%),
+    radial-gradient(50rem 36rem at 100% 10%, rgb(14 165 233 / 0.20), transparent 60%),
+    radial-gradient(48rem 40rem at 50% 110%, rgb(26 98 214 / 0.22), transparent 60%),
+    var(--background);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+/* Liquid glass surface: frosted blur, bright rim, soft depth */
+.glass {
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.72), rgb(255 255 255 / 0.42));
+  border: 1px solid rgb(255 255 255 / 0.7);
+  backdrop-filter: blur(22px) saturate(1.6);
+  -webkit-backdrop-filter: blur(22px) saturate(1.6);
+  box-shadow: var(--shadow-card);
+}
+.glass-dark {
+  background: linear-gradient(160deg, rgb(12 49 128 / 0.82), rgb(7 35 92 / 0.78));
+  border: 1px solid rgb(255 255 255 / 0.14);
+  backdrop-filter: blur(24px) saturate(1.5);
+  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.18) inset, 0 20px 50px -18px rgb(7 35 92 / 0.55);
 }
 
 .tabular {

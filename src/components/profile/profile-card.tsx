@@ -48,11 +48,11 @@ export function ProfileCard({ profile }: { profile: Profile }) {
           // eslint-disable-next-line @next/next/no-img-element
           <img src={profile.avatar_url} alt="" className="size-24 rounded-full object-cover" />
         ) : (
-          <div className="grid size-24 place-items-center rounded-full bg-navy font-display text-3xl font-semibold text-primary">
+          <div className="grid size-24 place-items-center rounded-full bg-navy font-display text-3xl font-semibold text-sky-300">
             {initials(profile.full_name, profile.email)}
           </div>
         )}
-        <p className="mt-4 font-display text-lg font-semibold">{profile.full_name ?? "Nivvy member"}</p>
+        <p className="mt-4 font-display text-lg font-semibold">{profile.full_name ?? "Stocks member"}</p>
         <Badge tone={statusTone[profile.account_status]} className="mt-2 capitalize">
           {profile.account_status}
         </Badge>

@@ -9,10 +9,10 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
 
   return (
     <main className="grid min-h-dvh lg:grid-cols-[1.05fr_1fr]">
-      <aside className="relative hidden overflow-hidden bg-navy p-12 text-navy-foreground lg:flex lg:flex-col lg:justify-between">
+      <aside className="glass-dark relative m-4 mr-0 hidden overflow-hidden rounded-3xl p-12 text-navy-foreground lg:flex lg:flex-col lg:justify-between">
         <div
           aria-hidden
-          className="absolute -right-32 -top-32 size-[28rem] rounded-full border border-white/5"
+          className="absolute -right-32 -top-32 size-[28rem] rounded-full border border-white/10 bg-sky-400/10 blur-sm"
         />
         <div
           aria-hidden
@@ -21,15 +21,15 @@ export default async function AuthLayout({ children }: { children: React.ReactNo
         <Logo tone="light" />
         <div className="relative max-w-md">
           <h1 className="font-display text-4xl font-semibold leading-tight tracking-tight">
-            Your Nivvy shares, all in one place.
+            Your Stocks shares, all in one place.
           </h1>
           <p className="mt-4 text-navy-muted">
-            Browse share packages, track your portfolio and stay connected with the Nivvy
+            Browse share packages, track your portfolio and stay connected with the Stocks
             community.
           </p>
         </div>
         <p className="relative flex items-center gap-2 text-sm text-navy-muted">
-          <ShieldCheck className="size-4 text-primary" /> Your account is protected by
+          <ShieldCheck className="size-4 text-sky-300" /> Your account is protected by
           server-side access checks.
         </p>
       </aside>

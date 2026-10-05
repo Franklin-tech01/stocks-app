@@ -1,12 +1,16 @@
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-/** Geometric "N" mark: two pillars joined by a rising diagonal. */
+/** The Stocks "S" mark, on a white rounded tile so it reads on any background. */
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 32 32" className={cn("size-8", className)} aria-hidden>
-      <rect width="32" height="32" rx="8" fill="var(--navy)" />
-      <path d="M9 23V9h3.2l7.6 9.6V9H23v14h-3.2l-7.6-9.6V23z" fill="var(--primary)" />
-    </svg>
+    <Image
+      src="/logo-mark.png"
+      alt="Stocks"
+      width={128}
+      height={128}
+      className={cn("size-8 shrink-0 rounded-lg bg-white object-contain", className)}
+    />
   );
 }
 
@@ -26,7 +30,7 @@ export function Logo({
           tone === "light" ? "text-white" : "text-foreground",
         )}
       >
-        Nivvy
+        Stocks
       </span>
     </span>
   );

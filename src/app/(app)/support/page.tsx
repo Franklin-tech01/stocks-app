@@ -11,7 +11,7 @@ export default async function SupportPage() {
   const [user, profile] = await Promise.all([getCurrentUser(), getProfile()]);
   return (
     <div className="space-y-6">
-      <PageHeader title="Need help?" description="Reach the Nivvy team or the community." />
+      <PageHeader title="Need help?" description="Reach the Stocks team or the community." />
       <SupportCard />
       <SupportForm defaultName={profile.data?.full_name ?? ""} defaultEmail={realEmail(user?.email) ?? ""} />
     </div>

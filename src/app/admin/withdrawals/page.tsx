@@ -4,13 +4,15 @@ import { StatusBadge } from "@/components/ui/status-badge";
 import { EmptyState } from "@/components/layout/page-header";
 import { WithdrawalActions } from "@/components/admin/withdrawal-actions";
 import { Banknote } from "lucide-react";
-import { getAdminWithdrawals } from "@/lib/data/admin";
+import { getAdminWithdrawals, parseListParams } from "@/lib/data/admin-lists";
+import { Pager, SearchBox } from "@/components/admin/list-controls";
 import { formatDate, formatMoney } from "@/lib/utils";
 
 export const metadata: Metadata = { title: "Admin · Withdrawals" };
 
-export default async function AdminWithdrawalsPage() {
-  const withdrawals = await getAdminWithdrawals();
+export default async function AdminWithdrawalsPage({ searchParams }: { searchParams: Promise<{ page?: string; q?: string }> }) {
+  const data = await getAdminWithdrawals(parseListParams(await searchParams));
+  const withdrawals = data.rows;
 
   return (
     <div>
@@ -19,6 +21,9 @@ export default async function AdminWithdrawalsPage() {
         Pay each request from your own bank/Korapay dashboard, then mark it paid here. The user&apos;s
         balance was already held when they requested it.
       </p>
+      <div className="mt-5">
+        <SearchBox q={data.q} placeholder="Search name, phone, account or bank" />
+      </div>
 
       {withdrawals.length === 0 ? (
         <div className="mt-6">
@@ -83,6 +88,7 @@ export default async function AdminWithdrawalsPage() {
           </div>
         </Card>
       )}
+      <Pager data={data} basePath="/admin/withdrawals" />
     </div>
   );
 }
