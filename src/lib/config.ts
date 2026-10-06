@@ -6,9 +6,9 @@
  */
 export const links = {
   communityGroup:
-    process.env.NEXT_PUBLIC_COMMUNITY_GROUP_URL || "https://t.me/+9BGUvcCUo-4xZmJk",
+    process.env.NEXT_PUBLIC_COMMUNITY_GROUP_URL || "https://t.me/+l7M2nPYgLN1hN2E0",
   communityChannel:
-    process.env.NEXT_PUBLIC_COMMUNITY_CHANNEL_URL || "https://t.me/+pgJpPYRODtswNzQ0",
+    process.env.NEXT_PUBLIC_COMMUNITY_CHANNEL_URL || "https://t.me/+04W6roYLCgcxN2Vk",
   whatsapp: process.env.NEXT_PUBLIC_SUPPORT_WHATSAPP_URL ?? "",
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL ?? "",
 };
