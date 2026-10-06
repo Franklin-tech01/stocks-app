@@ -3,14 +3,14 @@
  *
  * Better Auth requires an email per account, and no SMS provider is connected,
  * so a phone number is mapped to a deterministic internal email:
- *   0801 234 5678  ->  2348012345678@phone.nivvyusers.com
+ *   0801 234 5678  ->  2348012345678@phone.stocksusers.com
  * This address is never sent mail — it only satisfies email-shaped fields
  * (Better Auth, Korapay's customer.email). It deliberately does NOT use a
  * reserved non-deliverable TLD like `.invalid`: Korapay's own email format
  * validator rejects those outright, so deposits would fail for every user.
  * Users only ever see/type phone numbers.
  */
-export const PLACEHOLDER_DOMAIN = "phone.nivvyusers.com";
+export const PLACEHOLDER_DOMAIN = "phone.stocksusers.com";
 const DEFAULT_COUNTRY_CODE = "234"; // Nigeria
 
 /** Returns digits in international format without "+", or null if invalid. */

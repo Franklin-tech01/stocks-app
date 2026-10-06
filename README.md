@@ -92,7 +92,7 @@ Neon has no per-user RLS, so authorization lives in server code:
 - The database is only reachable from the server (`DATABASE_URL` is never `NEXT_PUBLIC_`).
 - Every user-owned query filters by the authenticated user id; `requireUser()` validates the session in the app layout.
 - Users can only edit their `full_name` (the phone number is their login). Balances, transactions, bonuses and status are never writable from the browser.
-- Phone login: Better Auth needs an email, so a phone maps to an internal `<digits>@phone.nivvyusers.com` address (`src/lib/phone.ts`) that is never sent mail — it only satisfies email-shaped fields (Better Auth, Korapay's `customer.email`). It intentionally isn't on a reserved TLD like `.invalid`: Korapay's own email validator rejects those. Numbers are normalized (default country code +234). Self-service password reset needs an SMS provider (not connected); until then support resets passwords and `/forgot-password` points to support.
+- Phone login: Better Auth needs an email, so a phone maps to an internal `<digits>@phone.stocksusers.com` address (`src/lib/phone.ts`) that is never sent mail — it only satisfies email-shaped fields (Better Auth, Korapay's `customer.email`). It intentionally isn't on a reserved TLD like `.invalid`: Korapay's own email validator rejects those. Numbers are normalized (default country code +234). Self-service password reset needs an SMS provider (not connected); until then support resets passwords and `/forgot-password` points to support.
 
 ## Promotional bonuses
 
