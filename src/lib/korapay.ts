@@ -1,5 +1,6 @@
 import "server-only";
 import crypto from "node:crypto";
+import { siteUrl } from "@/lib/config";
 
 /**
  * Korapay standard (hosted) checkout — server-initiated, browser redirected.
@@ -10,7 +11,7 @@ const API_BASE = "https://api.korapay.com/merchant/api/v1";
 const CHANNELS = new Set(["bank_transfer", "card"]);
 
 function appUrl() {
-  return (process.env.BETTER_AUTH_URL ?? "http://localhost:3000").replace(/\/+$/, "");
+  return siteUrl() ?? "http://localhost:3000";
 }
 
 export function webhookUrl() {

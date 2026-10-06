@@ -53,3 +53,13 @@ export const REFERRAL_RATE = 0.2;
 
 /** Length of every share plan, in days. */
 export const PLAN_DURATION_DAYS = 38;
+
+/**
+ * Public site URL from BETTER_AUTH_URL, tolerant of a missing scheme or trailing
+ * slash ("stocks-pro.vercel.app" -> "https://stocks-pro.vercel.app").
+ */
+export function siteUrl(): string | undefined {
+  const raw = process.env.BETTER_AUTH_URL?.trim();
+  if (!raw) return undefined;
+  return (/^https?:\/\//i.test(raw) ? raw : `https://${raw}`).replace(/\/+$/, "");
+}

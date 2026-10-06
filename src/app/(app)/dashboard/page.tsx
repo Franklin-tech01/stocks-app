@@ -21,6 +21,7 @@ import {
 	getWelcomeBonus,
 } from "@/lib/data";
 import { realEmail } from "@/lib/phone";
+import { siteUrl } from "@/lib/config";
 import { firstName } from "@/lib/utils";
 
 export const metadata: Metadata = { title: "Dashboard" };
@@ -39,7 +40,7 @@ export default async function DashboardPage() {
 			getShareEarnings(),
 		]);
 	// Canonical public URL, so an invite link copied in dev still points at the live site.
-	const baseUrl = (process.env.BETTER_AUTH_URL ?? "").replace(/\/+$/, "");
+	const baseUrl = siteUrl() ?? "";
 
 	const sharesOwned = holdings.data.reduce((n, h) => n + h.quantity, 0);
 	const errors = [profile, portfolio, holdings, reward, bonus, shareEarnings]

@@ -2,10 +2,11 @@ import "server-only";
 import { betterAuth } from "better-auth";
 import { nextCookies } from "better-auth/next-js";
 import { pool } from "@/lib/db";
+import { siteUrl } from "@/lib/config";
 
 export const auth = betterAuth({
   database: pool,
-  baseURL: process.env.BETTER_AUTH_URL?.replace(/\/+$/, ""),
+  baseURL: siteUrl(),
   // Allow local development even when BETTER_AUTH_URL points at production.
   trustedOrigins:
     process.env.NODE_ENV === "production"
