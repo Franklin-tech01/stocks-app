@@ -183,6 +183,20 @@ export async function requestWithdrawal(input: {
     return { ok: false, error: `Minimum withdrawal is ${formatMoney(MIN_WITHDRAWAL_AMOUNT)}.` };
   }
 
+  // No withdrawals until the user has bought at least one share.
+  try {
+    const [purchase] = await query<{ id: string }>(
+      "select id from transactions where user_id = $1 and type = 'share_purchase' and status = 'completed' limit 1",
+      [user.id],
+    );
+    if (!purchase) {
+      return { ok: false, error: "You can only withdraw after buying a share. Buy a share to unlock withdrawals." };
+    }
+  } catch (e) {
+    console.error("[withdrawal]", e);
+    return { ok: false, error: "Could not submit the withdrawal. Please try again." };
+  }
+
   let verified;
   try {
     verified = await verifyBankAccount(input.accountNumber, input.bankCode);

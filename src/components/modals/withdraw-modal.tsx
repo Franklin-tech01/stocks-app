@@ -143,8 +143,9 @@ export function WithdrawModal({
           <div className="flex gap-2.5 rounded-md bg-muted p-3 text-sm text-muted-foreground">
             <Info className="mt-0.5 size-4 shrink-0" />
             <p>
-              The amount is held from your balance immediately and paid out after review. A{" "}
-              {WITHDRAWAL_CHARGE_RATE * 100}% withdrawal charge applies — you receive the rest.
+              Withdrawals unlock after you buy your first share. The amount is held from your balance immediately
+              and paid out after review. A {WITHDRAWAL_CHARGE_RATE * 100}% withdrawal charge applies — you receive
+              the rest.
             </p>
           </div>
 
